@@ -1,11 +1,11 @@
-﻿{
+{
   "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
-  "id": "SaberFactory",
-  "name": "Saber Factory",
+  "id": "SaberFactoryReloaded",
+  "name": "Saber Factory Reloaded",
   "author": "Toni Macaroni",
   "version": "2.6.2",
-  "description": "A highly customizable saber mod",
-  "gameVersion": "1.32.0",
+  "description": "A continuation of ToniMacaroni's SaberFactory",
+  "gameVersion": "1.39.1",
   "dependsOn": {
     "AssetBundleLoadingTools": "^1.0.0",
     "BeatSaberMarkupLanguage": "^1.6.10",
