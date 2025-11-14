@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -48,9 +48,9 @@ namespace SaberFactory.UI.Lib.BSML
         public override void HandleType(BSMLParser.ComponentTypeWithData componentType, BSMLParserParams parserParams)
         {
             base.HandleType(componentType, parserParams);
-            var backgroundable = (Backgroundable)componentType.component;
+            var backgroundable = (Backgroundable)componentType.Component;
 
-            if (componentType.data.TryGetValue("customBg", out var customBg))
+            if (componentType.Data.TryGetValue("customBg", out var customBg))
             {
                 InitSprite();
                 var imageview = GetOrAddImageView(backgroundable);
@@ -61,17 +61,17 @@ namespace SaberFactory.UI.Lib.BSML
                 }
             }
 
-            if (componentType.data.TryGetValue("customColor", out var customColor))
+            if (componentType.Data.TryGetValue("customColor", out var customColor))
             {
                 TrySetBackgroundColor(backgroundable, customColor);
             }
 
-            if (componentType.data.TryGetValue("border", out var borderAttr))
+            if (componentType.Data.TryGetValue("border", out var borderAttr))
             {
                 AddBorder(backgroundable.gameObject, borderAttr == "square");
             }
 
-            if (componentType.data.TryGetValue("raycast", out var raycastAttr))
+            if (componentType.Data.TryGetValue("raycast", out var raycastAttr))
             {
                 if (backgroundable.background != null)
                 {
@@ -79,7 +79,7 @@ namespace SaberFactory.UI.Lib.BSML
                 }
             }
 
-            if (componentType.data.TryGetValue("skew", out var skew))
+            if (componentType.Data.TryGetValue("skew", out var skew))
             {
                 if (backgroundable.background is ImageView imageView)
                 {
@@ -189,4 +189,4 @@ namespace SaberFactory.UI.Lib.BSML
             background.background.color = color;
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Linq;
 using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Components;
@@ -79,8 +79,8 @@ namespace SaberFactory.UI.Lib.BSML.Tags
             child.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             child.AddComponent<LayoutElement>();
             var externalComponents = child.AddComponent<ExternalComponents>();
-            externalComponents.components.Add(scrollView);
-            externalComponents.components.Add(scrollView.transform);
+            externalComponents.Components.Add(scrollView);
+            externalComponents.Components.Add(scrollView.transform);
 
             child.transform.AsRectTransform().sizeDelta = new Vector2(0, -1);
 
@@ -102,4 +102,4 @@ namespace SaberFactory.UI.Lib.BSML.Tags
             rectTransform.pivot = new Vector2(0.5f, 1);
         }
     }
-}
+}*/

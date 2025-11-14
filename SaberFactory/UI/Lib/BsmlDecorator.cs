@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -61,44 +62,17 @@ namespace SaberFactory.UI.Lib
             _templates.Add(name, template);
         }
 
-        public async Task<BSMLParserParams> ParseFromResourceAsync(string resourceName, GameObject parent, object host)
-        {
-            if (!_bsmlCache.TryGetValue(resourceName, out var node))
-            {
-                var data = await Readers.ReadResourceAsync(resourceName);
-                var content = Readers.BytesToString(data);
-                content = Process(content);
-                var doc = new XmlDocument();
-                doc.Load(XmlReader.Create(new StringReader(content), _readerSettings));
-                ProcessDoc(doc);
-                node = doc;
-                _bsmlCache.Add(resourceName, node);
-            }
+        // these were probably old before bsml utilities were added. away they go!
+        public Task<BSMLParserParams> ParseFromResourceAsync(string resourceName, GameObject parent, object host) => Task.FromResult(ParseFromResource(resourceName, parent, host));
 
-            return BSMLParser.instance.Parse(node, parent, host);
-        }
-
-        public BSMLParserParams ParseFromResource(string resourceName, GameObject parent, object host)
-        {
-            if (!_bsmlCache.TryGetValue(resourceName, out var node))
-            {
-                var data = Readers.ReadResource(resourceName);
-                var content = Readers.BytesToString(data);
-                content = Process(content);
-                var doc = new XmlDocument();
-                doc.Load(XmlReader.Create(new StringReader(content), _readerSettings));
-                ProcessDoc(doc);
-                node = doc;
-                _bsmlCache.Add(resourceName, node);
-            }
-
-            return BSMLParser.instance.Parse(node, parent, host);
-        }
+        public BSMLParserParams ParseFromResource(string resourceName, GameObject parent, object host) =>
+            BSMLParser.Instance.Parse(Utilities.GetResourceContent(Assembly.GetExecutingAssembly(), resourceName),
+                parent, host);
 
         public BSMLParserParams ParseFromString(string content, GameObject parent, object host)
         {
             content = Process(content);
-            return BSMLParser.instance.Parse(content, parent, host);
+            return BSMLParser.Instance.Parse(content, parent, host);
         }
         
         public void ProcessDoc(XmlDocument doc)
