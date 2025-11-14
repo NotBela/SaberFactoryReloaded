@@ -63,11 +63,39 @@ namespace SaberFactory.UI.Lib
         }
 
         // these were probably old before bsml utilities were added. away they go!
-        public Task<BSMLParserParams> ParseFromResourceAsync(string resourceName, GameObject parent, object host) => Task.FromResult(ParseFromResource(resourceName, parent, host));
+        public async Task<BSMLParserParams> ParseFromResourceAsync(string resourceName, GameObject parent, object host)
+        {
+            if (!_bsmlCache.TryGetValue(resourceName, out var node))
+            {
+                var data = await Readers.ReadResourceAsync(resourceName);
+                var content = Readers.BytesToString(data);
+                content = Process(content);
+                var doc = new XmlDocument();
+                doc.Load(XmlReader.Create(new StringReader(content), _readerSettings));
+                ProcessDoc(doc);
+                node = doc;
+                _bsmlCache.Add(resourceName, node);
+            }
 
-        public BSMLParserParams ParseFromResource(string resourceName, GameObject parent, object host) =>
-            BSMLParser.Instance.Parse(Utilities.GetResourceContent(Assembly.GetExecutingAssembly(), resourceName),
-                parent, host);
+            return BSMLParser.Instance.Parse(node.OuterXml, parent, host);
+        }
+        
+        public BSMLParserParams ParseFromResource(string resourceName, GameObject parent, object host)
+        {
+            if (!_bsmlCache.TryGetValue(resourceName, out var node))
+            {
+                var data = Readers.ReadResource(resourceName);
+                var content = Readers.BytesToString(data);
+                content = Process(content);
+                var doc = new XmlDocument();
+                doc.Load(XmlReader.Create(new StringReader(content), _readerSettings));
+                ProcessDoc(doc);
+                node = doc;
+                _bsmlCache.Add(resourceName, node);
+            }
+
+            return BSMLParser.Instance.Parse(node.OuterXml, parent, host);
+        }
 
         public BSMLParserParams ParseFromString(string content, GameObject parent, object host)
         {

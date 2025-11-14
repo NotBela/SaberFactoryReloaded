@@ -103,7 +103,7 @@ namespace SaberFactory.Game
             {
                 setSaberFakeGlowColors[i].SetField("_colorManager", this._colorManager);
             }
-            defaultSaberModelCon.Init(parent, saber, _saberColor.GetValueOrDefault());
+            defaultSaberModelCon.Init(parent, saber, _colorManager.ColorForSaberType(saber.saberType));
             baseVisualsGO.SetActive(true);
             return baseVisualsGO;
         }
