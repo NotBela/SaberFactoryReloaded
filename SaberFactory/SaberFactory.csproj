@@ -89,7 +89,7 @@
           <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Interactable.dll</HintPath>
           <Private>false</Private>
       </Reference>
-      <Reference Include="SaberTrail">
+      <Reference Include="SaberTrail" Publicize="True">
           <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\SaberTrail.dll</HintPath>
           <Private>false</Private>
       </Reference>
