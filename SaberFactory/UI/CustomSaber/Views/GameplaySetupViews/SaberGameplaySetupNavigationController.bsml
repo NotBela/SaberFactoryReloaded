@@ -1,0 +1,10 @@
+﻿<vertical pref-width='14.5' bg='round-rect-panel' custom-color='$default-panel' pad='2'>
+    <macro.for-each items='nav-buttons'>
+        <sui.nav-button pref-width='12'
+                        on-selected='selected'
+                        icon='~icon'
+                        hover-hint='~hover-hint'
+                        on-color='#000000dd'
+                        off-color='#ffffff60'/>
+    </macro.for-each>
+</vertical>

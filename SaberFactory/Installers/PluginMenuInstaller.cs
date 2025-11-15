@@ -3,6 +3,8 @@ using SaberFactory.Helpers;
 using SaberFactory.Instances.Trail;
 using SaberFactory.UI;
 using SaberFactory.UI.CustomSaber;
+using SaberFactory.UI.CustomSaber.Views;
+using SaberFactory.UI.CustomSaber.Views.GameplaySetupViews;
 using SaberFactory.UI.Lib;
 using SaberFactory.UI.Lib.BSML;
 using Zenject;
@@ -28,6 +30,8 @@ namespace SaberFactory.Installers
             Container.Bind<MenuSaberProvider>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GizmoAssets>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<SaberGameplaySetupNavigationController>().FromNewComponentAsViewController().AsSingle();
 
 #if DEBUG
             //Container.Bind<DebugMenu>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
