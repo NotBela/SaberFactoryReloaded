@@ -6,7 +6,7 @@ namespace SaberFactory.UI
     {
         private readonly Editor.Editor _editor;
 
-        protected SaberFactoryMenuButton(Editor.Editor editor) : base("Saber Factory", "Good quality sabers")
+        protected SaberFactoryMenuButton(Editor.Editor editor) : base("SF Reloaded", "Good quality sabers")
         {
             _editor = editor;
         }

@@ -258,6 +258,8 @@
     <EmbeddedResource Include="UI\PatreonView.bsml" />
     <None Remove="Resources\UI\patreon-medium-button.png" />
     <EmbeddedResource Include="Resources\UI\patreon-button.png" />
+    <None Remove="UI\CustomSaber\Views\GameplaySetup\SaberGameplaySetupView.bsml" />
+    <EmbeddedResource Include="UI\CustomSaber\Views\GameplaySetupViews\SaberGameplaySetupView.bsml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
@@ -364,5 +366,8 @@
     <None Include="..\changelog.md">
       <Link>changelog.md</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="UI\CustomSaber\Views\SaberGameplaySetupViewController.cs" />
   </ItemGroup>
 </Project>
